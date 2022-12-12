@@ -30,7 +30,7 @@ const insertDoctor = (props) => {
 
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('http://localhost:5000/doctors', {
+      const response = await fetch('https://vmh.azurewebsites.net/doctors', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

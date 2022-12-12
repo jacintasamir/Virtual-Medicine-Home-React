@@ -20,7 +20,7 @@ const doctorPage = () => {
       try {
         // send an HTTP GET request to the get doctors route we defined in our Express REST API
         const response = await fetch(
-          `http://localhost:5000/doctors/${doctorId}`,
+          `https://vmh.azurewebsites.net/doctors/${doctorId}`,
           {
             signal: fetchSignal
           }

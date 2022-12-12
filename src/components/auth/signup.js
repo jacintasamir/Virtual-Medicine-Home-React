@@ -7,7 +7,7 @@ const SignupForm = () => {
 
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('http://localhost:5000/auth/signup', {
+      const response = await fetch('https://vmh.azurewebsites.net/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

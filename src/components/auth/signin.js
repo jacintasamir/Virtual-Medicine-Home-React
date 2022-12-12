@@ -13,7 +13,7 @@ const SigninForm = () => {
 
   const submitHandler = async (formData) => {
     try {
-      const response = await fetch('http://localhost:5000/auth/signin', {
+      const response = await fetch('https://vmh.azurewebsites.net/auth/signin', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

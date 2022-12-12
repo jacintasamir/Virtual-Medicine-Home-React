@@ -23,7 +23,7 @@ const giveReview = (props) => {
       try {
         review = [formData[0],formData[1],formData[2]]
         doctorDetails.reviews.append(review)
-        const response = await fetch(`http://localhost:5000/doctors/${doctorId}`, {
+        const response = await fetch(`https://vmh.azurewebsites.net/doctors/${doctorId}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
