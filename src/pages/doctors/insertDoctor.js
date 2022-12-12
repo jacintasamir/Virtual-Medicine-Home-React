@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 
-import AddProductForm from '../components/products/AddProductForm';
+import insertDoctor from '../components/doctors/insertDoctor';
 
-const AddProductPage = () => {
-  const [suppliers, setSuppliers] = useState([]);
+const insertDoctorPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -12,16 +11,6 @@ const AddProductPage = () => {
 
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:5000/suppliers', {
-          signal: fetchSignal
-        });
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw Error(data.error);
-        }
-
-        setSuppliers(data.suppliers);
         setIsLoading(false);
       } catch (err) {
         console.log(err.message);
@@ -36,14 +25,14 @@ const AddProductPage = () => {
   }, []);
 
   if (isLoading) {
-    return <p>Loading list of existing suppliers...</p>;
+    return <p>Loading...</p>;
   }
 
   return (
     <div>
-      <AddProductForm suppliers={suppliers} />
+      <insertDoctor />
     </div>
   );
 };
 
-export default AddProductPage;
+export default insertDoctorPage;

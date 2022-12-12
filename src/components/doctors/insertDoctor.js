@@ -5,15 +5,28 @@ import FormInputError from '../../UI/form/FormInputError';
 import SelectInput from '../../UI/form/SelectInput';
 import TextAreaInput from '../../UI/form/TextAreaInput';
 import TextInput from '../../UI/form/TextInput';
+import CheckboxInput from '../../UI/form/CheckboxInput';
 
 const insertDoctor = (props) => {
   const { register, handleSubmit, formState } = useForm();
 
   const authContext = useContext(AuthContext);
 
-  const suppliersOptions = props.suppliers.map((s) => { //////
-    return { name: s.name, value: s._id };
-  });
+  const hoursOptions =  {
+    '1': '08:00',
+    '2': '09:00',
+    '3': '10:00',
+    '4': '11:00',
+    '5': '12:00',
+    '6': '13:00',
+    '7': '14:00',
+    '8': '15:00',
+    '9': '16:00',
+    '10': '17:00',
+    '11': '18:00',
+    '12': '19:00',
+    '13': '20:00'
+  };
 
   const submitHandler = async (formData) => {
     try {
@@ -65,33 +78,46 @@ const insertDoctor = (props) => {
       )}
 
       <TextInput
-        label="Price"
-        type="number"
-        name="price"
+        label="Location"
+        name="location"
         register={register}
-        validation={{ required: true, min: 0 }}
+        validation={{required: True}}
       />
-      {formState.errors.price && (
-        <FormInputError>Product price must be greater than 0.</FormInputError>
+      {formState.errors.location && (
+        <FormInputError>Location must not be empty</FormInputError>
       )}
 
-      <TextInput
-        label="Image URL"
-        type="text"
-        name="imgURL"
-        register={register}
-      />
-
-      <SelectInput
-        label="Supplier"
-        name="supplierId"
+      <CheckboxInput
+        label="Workdays"
+        name="days"
         register={register}
         validation={{ required: true }}
-        options={suppliersOptions}
       />
-      {formState.errors.supplierId && (
-        <FormInputError>Supplier must not be empty.</FormInputError>
+      {formState.errors.days && (
+        <FormInputError>Must select at least one day.</FormInputError>
       )}
+
+      <SelectInput
+        label="Starting Hours"
+        name="starthours"
+        register={register}
+        validation={{ required: true }}
+        options={hoursOptions}
+      />
+      {formState.errors.starthours && (
+        <FormInputError>Starting work hours must not be empty.</FormInputError>
+      )}  
+
+      <SelectInput
+        label="Ending Hours"
+        name="endhours"
+        register={register}
+        validation={{ required: true }}
+        options={hoursOptions}
+      />
+      {formState.errors.endhours && (
+        <FormInputError>Ending work hours must not be empty.</FormInputError>
+      )}  
 
       <button
         type="submit"

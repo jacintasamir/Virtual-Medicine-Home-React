@@ -16,11 +16,10 @@ const doctorSummary = (props) => {
     <Card>
       <CardHeader>
         <h2>{props.doctor.name}</h2>
-        <h3 className="font-bold">{props.doctor.specialization}</h3>
       </CardHeader>
       <CardBody>
-        <h5>{props.doctor.schedule}</h5>
-        <h5>{props.doctor.reviews}</h5>
+        <h3>{props.doctor.specialization}</h3>
+        <h3>{props.doctor.location}</h3>
       </CardBody>
       <CardActions>
         <button
