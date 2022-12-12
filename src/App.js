@@ -1,14 +1,13 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AuthProvider from './store/AuthProvider';
+import AuthProvider from './store/authProvider';
 
 import insertDoctorPage from './pages/doctors/insertDoctor';
 import HomePage from './pages/HomePage';
 import doctorsPage from './pages/doctors/viewAllDoctors';
 import doctorPage from './pages/doctors/doctor'
-import SigninPage from './pages/SigninPage';
-import SignupPage from './pages/SignupPage';
+import SigninPage from './pages/auth/SigninPage';
+import SignupPage from './pages/auth/SignupPage';
 import Layout from './UI/layout/Layout';
-import ProdutPage from './pages/ProdutPage';
 
 const App = () => {
   return (

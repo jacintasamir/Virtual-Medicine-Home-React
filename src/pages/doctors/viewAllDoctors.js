@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import ProductsList from '../components/products/ProductsList';
+import doctorList from '../components/doctors/doctorsList';
 
-const ProductsPage = () => {
+const doctorsPage = () => {
   // let's define a state for products
-  const [products, setProducts] = useState([]);
+  const [doctors, setDoctors] = useState([]);
 
   // let's define a state for loading
   const [isLoading, setIsLoading] = useState(true);
@@ -12,7 +12,7 @@ const ProductsPage = () => {
     const fetchAbortController = new AbortController();
     const fetchSignal = fetchAbortController.signal;
 
-    const fetchProducts = async () => {
+    const fetchDoctors = async () => {
       try {
         // send an HTTP GET request to the get products route we defined in our Express REST API
         const response = await fetch('http://localhost:5000/products', {
@@ -28,7 +28,7 @@ const ProductsPage = () => {
         }
 
         // we now need to set our component state to the products we fetched
-        setProducts(data.products);
+        setDoctors(data.products);
 
         // after we set the products' state, let's set the loading state to false
         setIsLoading(false);
@@ -50,9 +50,9 @@ const ProductsPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <ProductsList products={products} />
+      <doctorList doctors={doctors} />
     </div>
   );
 };
 
-export default ProductsPage;
+export default doctorsPage;
