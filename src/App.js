@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import AuthProvider from './store/AuthProvider';
 
-function App() {
+import insertDoctorPage from './pages/doctors/insertDoctor';
+import HomePage from './pages/HomePage';
+import doctorsPage from './pages/doctors/viewAllDoctors';
+import doctorPage from './pages/doctors/doctor'
+import SigninPage from './pages/SigninPage';
+import SignupPage from './pages/SignupPage';
+import Layout from './UI/layout/Layout';
+import ProdutPage from './pages/ProdutPage';
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AuthProvider>
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/doctors" element={<doctorsPage />} />
+            <Route path="/doctors/:doctorId" element={<doctorPage />} />
+            <Route path="/doctors/insert" element={<insertDoctorPage />} />
+            <Route path="/signup" element={<SignupPage />} />
+            <Route path="/signin" element={<SigninPage />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
+    </AuthProvider>
   );
-}
+};
 
 export default App;
